@@ -6,8 +6,6 @@ node_modules
 
 # builds
 build
-lib
-dist
 
 # misc
 .DS_Store
