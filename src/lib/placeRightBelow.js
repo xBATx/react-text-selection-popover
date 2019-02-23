@@ -2,7 +2,7 @@ export default ({
   // The gap between the text and the selection and the popover
   // comes from `props.gap`
   gap,
-
+  zIndex,
   // by default frame === window but this might
   // change in future. For example if we'd like to restrict
   // placement to a container other than window
@@ -22,7 +22,7 @@ export default ({
   /* selectionWidth, */
   selectionHeight
 }) => {
-  const style = { position: "fixed" };
+  const style = { position: "fixed", zIndex };
 
   style.left = selectionLeft;
   style.top = selectionTop + selectionHeight + gap;

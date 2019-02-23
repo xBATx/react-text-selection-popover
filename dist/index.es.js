@@ -144,6 +144,7 @@ function getVisibleSelectionRect(global) {
 
 var centerAboveOrBelow = (function (_ref) {
   var gap = _ref.gap,
+      zIndex = _ref.zIndex,
       frameWidth = _ref.frameWidth,
       frameLeft = _ref.frameLeft,
       frameTop = _ref.frameTop,
@@ -154,7 +155,7 @@ var centerAboveOrBelow = (function (_ref) {
       selectionWidth = _ref.selectionWidth,
       selectionHeight = _ref.selectionHeight;
 
-  var style = { position: "fixed" };
+  var style = { position: "fixed", zIndex: zIndex };
 
   style.left = selectionLeft + selectionWidth / 2 - boxWidth / 2;
   style.top = selectionTop - boxHeight - gap;
@@ -313,6 +314,7 @@ var Popover = function (_Component) {
           windowHeight = _props.windowHeight,
           windowWidth = _props.windowWidth,
           children = _props.children,
+          zIndex = _props.zIndex,
           className = _props.className;
       var selectionPosition = this.state.selectionPosition;
 
@@ -327,6 +329,7 @@ var Popover = function (_Component) {
          */
         style = placementStrategy({
           gap: gap,
+          zIndex: zIndex,
           frameWidth: windowWidth,
           frameHeight: windowHeight,
           frameLeft: 0,
@@ -385,6 +388,7 @@ Popover.defaultProps = {
   selectionRef: { current: document.body },
   scrollRef: { current: window },
   placementStrategy: centerAboveOrBelow,
+  zIndex: 1,
   gap: 5
 };
 
@@ -422,6 +426,7 @@ Popover.propTypes = {
   placementStrategy: PropTypes.func,
   measureRef: PropTypes.func.isRequired,
   contentRect: PropTypes.object.isRequired,
+  zIndex: PropTypes.number,
   gap: PropTypes.number,
   isOpen: PropTypes.bool
 };
